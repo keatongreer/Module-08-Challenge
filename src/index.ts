@@ -31,7 +31,7 @@ const motorbike1 = new Motorbike(Cli.generateVin(), "black", "Harley Davidson", 
 // xTODO: uncomment once trucks are implemented
 vehicles.push(truck1);
 vehicles.push(car1);
-// TODO: uncomment once motorbikes are implemented
+// xTODO: uncomment once motorbikes are implemented
 vehicles.push(motorbike1);
 
 // create a new instance of the Cli class
