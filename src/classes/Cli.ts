@@ -10,7 +10,7 @@ class Cli {
   // xTODO: update the vehicles property to accept Truck and Motorbike objects as well
   // xTODO: You will need to use the Union operator to define additional types for the array
   // xTODO: See the AbleToTow interface for an example of how to use the Union operator
-  vehicles: (Car | Truck)[];
+  vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
@@ -60,8 +60,8 @@ class Cli {
           type: 'list',
           name: 'vehicleType',
           message: 'Select a vehicle type',
-          // TODO: Update the choices array to include Truck and Motorbike
-          choices: ['Car'],
+          // xTODO: Update the choices array to include Truck and Motorbike
+          choices: ['Car', 'Truck', 'Motorbike'],
         },
       ])
       .then((answers) => {
@@ -69,7 +69,15 @@ class Cli {
           // create a car
           this.createCar();
         }
-        // TODO: add statements to create a truck or motorbike if the user selects the respective vehicle type
+        // xTODO: add statements to create a truck or motorbike if the user selects the respective vehicle type
+        else if (answers.vehicleType === 'Truck') {
+          // create a truck
+          this.createTruck();
+        }
+        else {
+          // create a motorbike
+          this.createMotorbike();
+        }
       });
   }
 
@@ -170,10 +178,24 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: Use the answers object to pass the required properties to the Truck constructor
-        // TODO: push the truck to the vehicles array
-        // TODO: set the selectedVehicleVin to the vin of the truck
-        // TODO: perform actions on the truck
+        // xTODO: Use the answers object to pass the required properties to the Truck constructor
+        const truck = new Truck(
+          Cli.generateVin(),
+          answers.color,
+          answers.make,
+          answers.model,
+          parseInt(answers.year),
+          parseInt(answers.weight),
+          parseInt(answers.topSpeed),
+          [],
+          parseInt(answers.towingCapacity)
+        );
+        // xTODO: push the truck to the vehicles array
+        this.vehicles.push(truck);
+        // xTODO: set the selectedVehicleVin to the vin of the truck
+        this.selectedVehicleVin = truck.vin;
+        // xTODO: perform actions on the truck
+        this.performActions();
       });
   }
 
@@ -233,10 +255,23 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: Use the answers object to pass the required properties to the Motorbike constructor
-        // TODO: push the motorbike to the vehicles array
-        // TODO: set the selectedVehicleVin to the vin of the motorbike
-        // TODO: perform actions on the motorbike
+        // xTODO: Use the answers object to pass the required properties to the Motorbike constructor
+        const motorbike = new Motorbike(
+          Cli.generateVin(),
+          answers.color,
+          answers.make,
+          answers.model,
+          parseInt(answers.year),
+          parseInt(answers.weight),
+          parseInt(answers.topSpeed),
+          []
+        );
+        // xTODO: push the motorbike to the vehicles array
+        this.vehicles.push(motorbike);
+        // xTODO: set the selectedVehicleVin to the vin of the motorbike
+        this.selectedVehicleVin = motorbike.vin;
+        // xTODO: perform actions on the motorbike
+        this.performActions();
       });
   }
 
