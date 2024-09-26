@@ -5,11 +5,11 @@ import Car from './Car.js';
 import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
-// TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
+// xTODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
 class Truck extends Vehicle implements AbleToTow {
-  // TODO: Declare properties of the Truck class
-  // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
-  // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
+  // xTODO: Declare properties of the Truck class
+  // xTODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
+  // xTODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
   vin: string;
   color: string;
   make: string;
@@ -59,10 +59,18 @@ class Truck extends Vehicle implements AbleToTow {
 
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
-    // TODO: Get the make an model of the vehicle if it exists
-    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    // TODO: If it is, log that the vehicle is being towed
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
+    // xTODO: Get the make an model of the vehicle if it exists
+    const vehicleMake = vehicle.make;
+    const vehicleModel = vehicle.model;
+
+    // xTODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
+    if (vehicle.weight <= this.towingCapacity) {
+      // xTODO: If it is, log that the vehicle is being towed
+      console.log(`${vehicleMake} ${vehicleModel} is being towed`);
+    } else {
+      // xTODO: If it is not, log that the vehicle is too heavy to be towed
+      console.log(`${vehicleMake} ${vehicleModel} is too heavy to be towed`);
+    }
   }
 
   // TODO: Override the printDetails method from the Vehicle class
