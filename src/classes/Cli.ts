@@ -297,12 +297,11 @@ class Cli {
         if (answers.vehicleToTow === truckUsed) {
           // xTODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
           console.log(`The truck cannot tow itself...`);
-          this.performActions();
         } else {
           // xTODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
-          console.log(`${answers.vehicleToTow} has been towed.`);
-          this.performActions();
-        }        
+          console.log(`${answers.vehicleToTow.vin} -- ${answers.vehicleToTow.make} ${answers.vehicleToTow.model} has been towed.`);
+        }
+        this.performActions();
       });
   }
 
@@ -389,7 +388,7 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-        } else if (answers.action === 'Tow another vehicle') {
+        } else if (answers.action === 'Tow a vehicle') {
           // find the selected vehicle
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
@@ -399,6 +398,8 @@ class Cli {
                 this.findVehicleToTow(this.vehicles[i] as Truck);
                 // xTODO: After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
                 return;
+              } else {
+                console.log(`This vehicle cannot tow other vehicles...`);
               }
             }
           }
@@ -409,6 +410,8 @@ class Cli {
               // xTODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
               if (this.vehicles[i] instanceof Motorbike) {
                 (this.vehicles[i] as Motorbike).wheelie();
+              } else {
+                console.log(`This vehicle cannot perform a wheelie...`);
               }
             }
           }
