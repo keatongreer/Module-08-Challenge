@@ -63,7 +63,29 @@ class Motorbike extends Vehicle {
   // xTODO: The details should include the VIN, make, model, year, weight, top speed, color, and wheels
   override printDetails(): void {
     super.printDetails();
-    console.log(`${this.color} ${this.year} ${this.make} ${this.model}\nTop Speed: ${this.topSpeed}\nWeight: ${this.weight}\nVIN: ${this.vin}\nWheels: ${this.wheels}`);
+    
+    // Print details of the Motorbike class
+    console.log(`VIN: ${this.vin}`);
+    console.log(`Color: ${this.color}`);
+    console.log(`Make: ${this.make}`);
+    console.log(`Model: ${this.model}`);
+    console.log(`Year: ${this.year}`);
+    console.log(`Weight: ${this.weight} lbs`);
+    console.log(`Top Speed: ${this.topSpeed} mph`);
+
+    // Print details of the wheels
+    console.log(
+      `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
+    );
   }
 }
 
