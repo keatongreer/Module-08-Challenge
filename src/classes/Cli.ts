@@ -118,7 +118,7 @@ class Cli {
       ])
       .then((answers) => {
         const car = new Car(
-          // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
+          // xTODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -276,8 +276,8 @@ class Cli {
   }
 
   // method to find a vehicle to tow
-  // TODO: add a parameter to accept a truck object
-  findVehicleToTow(): void {
+  // xTODO: add a parameter to accept a truck object
+  findVehicleToTow(truckUsed: Truck): void {
     inquirer
       .prompt([
         {
@@ -293,9 +293,16 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: check if the selected vehicle is the truck
-        // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
-        // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
+        // xTODO: check if the selected vehicle is the truck
+        if (answers.vehicleToTow === truckUsed) {
+          // xTODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
+          console.log(`The truck cannot tow itself...`);
+          this.performActions();
+        } else {
+          // xTODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
+          console.log(`${answers.vehicleToTow} has been towed.`);
+          this.performActions();
+        }        
       });
   }
 
@@ -307,7 +314,7 @@ class Cli {
           type: 'list',
           name: 'action',
           message: 'Select an action',
-          // TODO: add options to tow and wheelie
+          // xTODO: add options to tow and wheelie
           choices: [
             'Print details',
             'Start vehicle',
@@ -317,6 +324,8 @@ class Cli {
             'Turn right',
             'Turn left',
             'Reverse',
+            'Tow a vehicle',
+            'Perform a wheelie',
             'Select or create another vehicle',
             'Exit',
           ],
@@ -380,10 +389,13 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-        }
-        // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
-        // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'Select or create another vehicle') {
+        } else if (answers.action === 'Tow another vehicle') {
+          // TODO: add statements to perform the tow action only if the selected vehicle is a truck. 
+          // TODO: Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument.
+          // TODO: After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
+        } else if (answers.action === 'Perform a wheelie') {
+          // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+        } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
           return;
