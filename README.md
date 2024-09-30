@@ -35,4 +35,4 @@ Github: keatongreer
 Contact me at keatongreer1@gmail.com with any questions
 
 ## Video
-[Click here to watch a video walkthrough of this project](https://youtu.be/rr-RONMVPRM)
+[Click here to watch a video walkthrough of this project](https://youtu.be/QPFTsYzzXhA)
